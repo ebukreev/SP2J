@@ -8,32 +8,16 @@ object CommandLineParser {
         var input: String? = null
         var output: String? = null
 
-        var isInput = false
-        var isOutput = false
+        var i = 0
+        while (i < args.size) {
+            when (args[i]) {
+                "-i" -> input = args[++i]
 
-        for (arg in args) {
-            when (arg) {
-                "-i" -> {
-                    if (isInput || isOutput) throw ParserException()
-                    isInput = true
-                }
-                "-o" -> {
-                    if (isInput || isOutput) throw ParserException()
-                    isOutput = true
-                }
-                else -> {
-                    when {
-                        isInput -> {
-                            input = arg
-                            isInput = false
-                        }
-                        isOutput -> {
-                            output = arg
-                            isOutput = false
-                        }
-                    }
-                }
+                "-o" -> output = args[++i]
+
+                else -> throw  ParserException()
             }
+            i++
         }
 
         if (input == null) throw ParserException()
