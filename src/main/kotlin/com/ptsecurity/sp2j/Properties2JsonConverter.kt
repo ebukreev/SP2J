@@ -1,9 +1,7 @@
 package com.ptsecurity.sp2j
 
-import java.nio.file.Path
-
-class Properties2JsonConverter : Converter {
-    override fun convert(input: Path, output: Path) {
+class Properties2JsonConverter {
+    fun convert(input: String, output: String) {
         TODO("Not yet implemented")
     }
 }

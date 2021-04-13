@@ -38,7 +38,7 @@ object CommandLineParser {
 
         if (input == null) throw ParserException()
 
-        var kind = when {
+        val kind = when {
             input.endsWith(".properties") -> ConverterKind.PROPERTIES_2_JSON
 
             input.endsWith(".json") -> ConverterKind.JSON_2_PROPERTIES
@@ -62,7 +62,7 @@ object CommandLineParser {
 
 data class CommandLineConfiguration(
     val input: String,
-    val output: String?,
+    val output: String,
     val kind: ConverterKind
 )
 
